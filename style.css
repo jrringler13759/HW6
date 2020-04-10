@@ -1,0 +1,51 @@
+body {
+    background-color: rgba(253, 232, 253, 0.959);
+    color: rgb(63, 1, 51); 
+}
+.navbar {
+    background-color:rgb(60, 1, 63);
+    color:rgba(253, 232, 253, 0.959); 
+}
+
+aside {
+    background-color:rgba(253, 232, 253, 0.838) ;
+}
+
+.card {
+    background-color: rgb(119, 38, 100);
+    color: white;
+}
+
+/*Search / Column #1 */
+
+#searchTitle {
+    margin: 20px;
+}
+
+.form-inline {
+    margin: 20px;
+}
+
+.btn-outline-success {
+    border-color: rgb(60, 1, 63); 
+    color: rgb(60, 1, 63);  
+}
+.btn-outline-success:hover {
+    background-color: rgb(60, 1, 63);
+    color: rgba(253, 232, 253, 0.959);
+    border-color: rgb(60, 1, 63);
+}
+
+#searchLog {
+    margin: 20px;
+}
+
+/* Weather / Column #2 */
+#fullWeather{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#fiveDay {
+    margin-right: 10px
+}

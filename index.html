@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv = "X-UA-Compatible" content="ie=edge">
+    <link rel = "stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "style.css">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+
+<header class = "navbar justify-content-center">
+    <span class = "navbar-brand mb-0 h1">Weather Dashboard</span>
+</header>
+
+<main = "container">
+    <div class = "row">
+        
+        <aside class = "col-md-4">
+            <header>
+                <h2 id = "searchTitle">Search for City:</h2>
+            </header>
+            <form class = "form-inline my-2 my-lg-0">
+                <input class = "form-control mr-sm-2" id = "cityInput" type = "search" placeholder = "Search">
+                <button class = "btn btn-outline-success my-2 my-sm-0" id = "searchBtn" type = "submit">Search Icon</button>
+            </form>
+            <section id = "searchLog">
+                
+            </section>
+        </aside>   
+        
+        <section class = "col-md-8">  
+            <section class = "card" id = "fullWeather">
+                <div class = "card-body">
+                    <h1 class = "card-title" id = "cityDateIcon">
+                        <span id = "cityName">city</span>
+                        <span id = "date">date</span>
+                        <span id = "mainIcon">icon</span>
+                    </h1>
+                    <p class = "card-text"><h5>Temperature:<span id = "temp"></span></h5></p>
+                    <p class = "card-text"><h5>Humidity:<span id = "humidity"></span></h5></p>
+                    <p class = "card-text"><h5>Wind Speed:<span id = "wind"></span></h5></p>
+                    <h5 class = "card-text">UV Index:<span class = "badge badge-secondary" id = "uv">number goes here</span</h5>
+                </div> 
+            </section>
+            
+            <section id = "fiveDay">
+                <header><h2>5 - Day Forecast</h2></header>
+                <div class = "row row-cols-1 row-cols-md-5">
+                    <div class = "col mb-1">
+                        <div class = "card h-100">
+                            <div class = "card-body">
+                                <h5 class = "card-title"><span id = "dateOne"></span></h5>
+                                <p class = "card-text"><span id = "iconOne"></span></p>
+                                <p class = "card-text"><span id = "tempDayOne"></span></p>
+                                <p class = "card-text"><span id = "humidOne"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col mb-1">
+                        <div class = "card h-100">
+                            <div class = "card-body">
+                                <h5 class = "card-title"><span id = "dateTwo"></span></h5>
+                                <p class = "card-text"><span id = "iconTwo"></span></p>
+                                <p class = "card-text"><span id = "tempDayTwo"></span></p>
+                                <p class = "card-text"><span id = "humidTwo"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col mb-1">
+                        <div class = "card h-100">
+                            <div class = "card-body">
+                                <h5 class = "card-title"><span id = "dateThree"></span></h5>
+                                <p class = "card-text"><span id = "iconThree"></span></p>
+                                <p class = "card-text"><span id = "tempDayThree"></span></p>
+                                <p class = "card-text"><span id = "humidThree"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col mb-1">
+                        <div class = "card h-100">
+                            <div class = "card-body">
+                                <h5 class = "card-title"><span id = "dateFour"></span></h5>
+                                <p class = "card-text"><span id = "iconFour"></span></p>
+                                <p class = "card-text"><span id = "tempDayFour"></span></p>
+                                <p class = "card-text"><span id = "humidFour"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col mb-1">
+                        <div class = "card h-100">
+                            <div class = "card-body">
+                                <h5 class = "card-title"><span id = "dateFive"></span></h5>
+                                <p class = "card-text"><span id = "iconOne"></span></p>
+                                <p class = "card-text"><span id = "tempDayFive"></span><p>
+                                <p class = "card-text"><span id = "humidFive"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  
+        </section>
+    </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src = "script.js"></script>
+    
+</body>
+</html>
