@@ -1,18 +1,19 @@
 body {
-    background-color: rgba(253, 232, 253, 0.959);
-    color: rgb(63, 1, 51); 
+    background-color: rgb(247, 220, 248);
+    color: #480E4A; 
 }
 .navbar {
-    background-color:rgb(60, 1, 63);
-    color:rgba(253, 232, 253, 0.959); 
+    background-color:#480E4A;
+    color:#C783CA; 
 }
 
 aside {
-    background-color:rgba(253, 232, 253, 0.838) ;
+    background-color:#C783CA;
+    
 }
 
 .card {
-    background-color: rgb(119, 38, 100);
+    background-color: #7E1981;
     color: white;
 }
 
@@ -26,14 +27,17 @@ aside {
     margin: 20px;
 }
 
+.cityBtn {
+    display: block;
+}
 .btn-outline-success {
-    border-color: rgb(60, 1, 63); 
-    color: rgb(60, 1, 63);  
+    border-color: #480E4A; 
+    color: #480E4A;  
 }
 .btn-outline-success:hover {
-    background-color: rgb(60, 1, 63);
-    color: rgba(253, 232, 253, 0.959);
-    border-color: rgb(60, 1, 63);
+    background-color: #480E4A;
+    color: #C783CA;
+    border-color: #480E4A;
 }
 
 #searchLog {
