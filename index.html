@@ -36,12 +36,12 @@
                     <h1 class = "card-title" id = "cityDateIcon">
                         <span id = "cityName">city</span>
                         <span id = "date">date</span>
-                        <span id = "mainIcon">icon</span>
+                        <img id="mainIcon" src="" alt="Weather icon">
                     </h1>
-                    <p class = "card-text"><h5>Temperature:<span id = "temp"></span></h5></p>
-                    <p class = "card-text"><h5>Humidity:<span id = "humidity"></span></h5></p>
-                    <p class = "card-text"><h5>Wind Speed:<span id = "wind"></span></h5></p>
-                    <h5 class = "card-text">UV Index:<span class = "badge badge-secondary" id = "uv">number goes here</span</h5>
+                    <p class = "card-text"><h5>Temperature: <span id = "temp"></span>&deg;F</h5></p>
+                    <p class = "card-text"><h5>Humidity: <span id = "humidity"></span>%</h5></p>
+                    <p class = "card-text"><h5>Wind Speed: <span id = "wind"></span></h5></p>
+                    <p><h5 class = "card-text">UV Index: <span id = "uv"></span></h5></p>
                 </div> 
             </section>
             
@@ -105,6 +105,7 @@
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script type="text/javascript" src = "script.js"></script>
     
 </body>

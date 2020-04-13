@@ -17,8 +17,8 @@ aside {
     color: white;
 }
 
-/*Search / Column #1 */
 
+/*Search / Column #1 */
 #searchTitle {
     margin: 20px;
 }
@@ -29,11 +29,15 @@ aside {
 
 .cityBtn {
     display: block;
+    border: none;
+    background-color: #C783CA;
 }
+
 .btn-outline-success {
     border-color: #480E4A; 
     color: #480E4A;  
 }
+
 .btn-outline-success:hover {
     background-color: #480E4A;
     color: #C783CA;
@@ -44,6 +48,7 @@ aside {
     margin: 20px;
 }
 
+
 /* Weather / Column #2 */
 #fullWeather{
     margin-top: 20px;
@@ -52,4 +57,7 @@ aside {
 
 #fiveDay {
     margin-right: 10px
+}
+.badgeOrange {
+    background: rgb(255, 115, 0);
 }
