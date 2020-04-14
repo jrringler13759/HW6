@@ -16,9 +16,20 @@ function displayNewCity (city){
     newSearch.text(city);
     $("#searchLog").prepend(newSearch);
     $("#searchLog").prepend(hr);
-    $("#uv").text("");
-
+    $("#uv").empty();
 }
+
+$("#searchLog").on("click", function(event){
+    var cityBtn = $(event.target);
+    var city = $(event.target).text();
+    console.log(city);
+    if(cityBtn.is("button")){
+        $("#uv").empty();
+        getWeather(city);
+        displayWeather(city);
+        displayUVIndex(city);
+    }
+})
 
 //LOCAL STORAGE
 //function onLoad() {
@@ -80,30 +91,37 @@ function displayWeather(cityInfo) {
 //also set colors based on index
 function displayUVIndex(uvResponse){
     var UVIndex = uvResponse.value;
-    var indexSpan = $("#uv");
+   
+    var index = $("#uv").append($("<span class = 'badge badge-lg'>").text(UVIndex));
     if (UVIndex >= 0 && UVIndex < 3){
-        indexSpan.append($("<span class = 'badge-success'>").text(UVIndex));
+        $(".badge").addClass("badge-success");
     } else if (UVIndex >= 3 && UVIndex < 6) {
-        indexSpan.append($("<span class = 'badge-warning'>").text(UVIndex));
-    } else if (UVIndex>= 6 && UVIndex<8) {
-        indexSpan.append($("<span class = 'badgeOrange'>").text(UVIndex));
+        $(".badge").addClass("badge-warning");
+    } else if (UVIndex >= 6 && UVIndex < 8) {
+        $(".badge").addClass("badgeOrange");
     } else if ( UVIndex > 8) {
-        indexSpan.append($("<span class = 'badge-danger'>").text(UVIndex));
-    }
+        $(".badge").addClass("badge-danger");
+    } 
+    //have to figure out how to clear that badgeOrange
+}
 
-   
-   
+
+
+
+
     /* $("#uv").text(UVIndex);
     if (UVIndex >= 0 && UVIndex < 3){
-        $(".badge-lg").addClass("badge-success")
+        $("#uv").addClass("badge-success")
     } else if (UVIndex >= 3 && UVIndex < 6){
-        $(".badge-lg").addClass("badge-warning");
+        $("#uv").addClass("badge-warning");
     } else if (UVIndex>= 6 && UVIndex<8){
-        $(".badge-lg").css("background-color", "orange");
+        $("#uv").css("background-color", "orange");
     } else if (UVIndex > 8) {
-        $(".badge-lg").addClass("badge-danger");
-    } */
-}
+        $("#uv").addClass("badge-danger");
+    }  */
+   
+   
+    
 
 
 

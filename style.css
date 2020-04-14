@@ -61,3 +61,8 @@ aside {
 .badgeOrange {
     background: rgb(255, 115, 0);
 }
+
+.badge {
+    color: white;
+    font-size: 18px;
+}
