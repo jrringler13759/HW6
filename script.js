@@ -84,21 +84,21 @@ function getWeather(city) {
 
 //set all current weather text to appropriate item
 function displayWeather(cityInfo) {
+    console.log(cityInfo);
     $("#weather").show();
-    
+    //Setting all the main current weather
     $("#cityName").text(cityInfo.name + "  ")
     var currentDate = moment().subtract(10, 'days').calendar(); 
     $("#date").text("(" + currentDate + ")");
     var icon = cityInfo.weather[0].icon;
     var iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
     $("#mainIcon").attr("src", iconURL);
-
     var mainTemp = ((cityInfo.main.temp - 273.15) * 1.80 + 32).toFixed(1); 
-    $("#temp").text(mainTemp);
+    $("#temp").text(mainTemp);   
     var humidity = cityInfo.main.humidity;
     $("#humidity").text(humidity);
     $("#wind").text(" " + cityInfo.wind.speed);
-
+    //Day 1 of the 5 day forecast
     $("#dateOne").text(currentDate);
     $("#iconOne").attr("src", iconURL);
     $("#tempDayOne").text(mainTemp);
@@ -129,28 +129,32 @@ function getForecast(city) {
     }).then(displayFiveDays)
 
 }
-//parse through and get the same time for 5 days
-//should I stringify?
+
+
+
 function displayFiveDays(forecastResponse) {
-    //console.log(forecastResponse);
     var list = forecastResponse.list;
     var threePMList = [];
-    console.log(threePMList);
     var fiveDayTemp = [];
-    var fiveDayHumid = [];
+    var fiveDayHumid = [];      
     for (var i = 0; i < list.length; i++){
         //console.log(list[i].dt_txt);
         if (list[i].dt_txt.includes("15:00:00")) {
             threePMList.push(list[i]);
+            
         }
     }
+
     for (var j = 0; j <threePMList.length; j++){
-        fiveDayTemp.push(threePMList[i].main.temp);
-        fiveDayHumid.push(threePMList[i].main.humidity);
+        fiveDayTemp.push(threePMList[j].main.temp);
+        fiveDayHumid.push(threePMList[j].main.humidity);
+        
     }
-    console.log(fiveDayTemp);
-    console.log(fiveDayHumid);
+        console.log(fiveDayTemp);
+        console.log(fiveDayHumid);
+   
 }
+
 
 $("#weather").hide();
 
