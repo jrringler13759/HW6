@@ -26,20 +26,17 @@ $("#searchLog").on("click", function(event){
     //console.log(city);
     if(cityBtn.is("button")){
         $("#uv").empty();
-        //should I do local storage or just make the ajax calls again??
         getWeather(city);
         displayWeather(city);
         displayUVIndex(city);
     }
 });
 
-//LOCAL STORAGE
-
-$( window ).on( "load", function() {
-    $("#weather").hide();
+$(window).on( "load", function() {
+    $("#weather").show();
     var city = localStorage.getItem("city");
     getWeather(city);
-    displayWeather(city);
+    getForecast(city)
 });
 
 $("#searchBtn").on("click", function(event){
@@ -52,9 +49,7 @@ $("#searchBtn").on("click", function(event){
         if (cities.indexOf(city)=== -1){
             cities.push(city);
             renderSearchHistory(city);
-            //localStorage.setItem("city", city);
         }
-        //updateCurrent();
         $("#cityInput").val("");
     }
     getWeather(city);
@@ -88,7 +83,7 @@ function displayWeather(cityInfo) {
     $("#weather").show();
     //Setting all the main current weather
     $("#cityName").text(cityInfo.name + "  ")
-    var currentDate = moment().subtract(10, 'days').calendar(); 
+    var currentDate = moment().format("MM/DD/YY"); 
     $("#date").text("(" + currentDate + ")");
     var icon = cityInfo.weather[0].icon;
     var iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
@@ -98,11 +93,6 @@ function displayWeather(cityInfo) {
     var humidity = cityInfo.main.humidity;
     $("#humidity").text(humidity);
     $("#wind").text(" " + cityInfo.wind.speed);
-    //Day 1 of the 5 day forecast
-    $("#dateOne").text(currentDate);
-    $("#iconOne").attr("src", iconURL);
-    $("#tempDayOne").text(mainTemp);
-    $("#humidOne").text(humidity);
 }
 //set uvIndex text to appropriate item
 //also set colors based on index
@@ -120,7 +110,8 @@ function displayUVIndex(uvResponse){
     } 
 }
     
-    
+
+//Five Day Forecast
 function getForecast(city) {
     var forecastQueryURL= "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=62fca606199df2afea0a32e25faffdc5";;
     $.ajax({
@@ -130,31 +121,25 @@ function getForecast(city) {
 
 }
 
-
-
 function displayFiveDays(forecastResponse) {
     var list = forecastResponse.list;
-    var threePMList = [];
-    var fiveDayTemp = [];
-    var fiveDayHumid = [];      
+    var count = 1;   
     for (var i = 0; i < list.length; i++){
-        //console.log(list[i].dt_txt);
+   
         if (list[i].dt_txt.includes("15:00:00")) {
-            threePMList.push(list[i]);
-            
+           
+           $("#date-"+ count).text(new Date(list[i].dt_txt).toLocaleDateString());
+           
+           var iconURL = "http://openweathermap.org/img/w/" + list[i].weather[0].icon + ".png";
+           $("#icon-"+ count).attr("src", iconURL);
+
+           $("#tempDay-"+ count).text(((list[i].main.temp- 273.15) * 1.80 +32).toFixed(1));
+           
+           $("#humid-"+ count).text(list[i].main.humidity);
+           count++; 
         }
     }
-
-    for (var j = 0; j <threePMList.length; j++){
-        fiveDayTemp.push(threePMList[j].main.temp);
-        fiveDayHumid.push(threePMList[j].main.humidity);
-        
-    }
-        console.log(fiveDayTemp);
-        console.log(fiveDayHumid);
-   
 }
-
 
 $("#weather").hide();
 
