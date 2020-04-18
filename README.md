@@ -1,23 +1,11 @@
 # HW6
 Homework #6 - Weather Dashboard
 
+Type a name of a city anywhere around the world.
+Make sure not to mispell the city
 
-column #1:
-search title
-search bar
-search history
+The current weather will be displayed to the top right 
+The next five days predicted forecast will also be displayed to the bottom right
 
-column#2
-row: full weather card
-    Title (city, date, icon)
-    Info:
-        Temp
-        Humidity
-        Wind
-        UV
-5day weather card
-    5 mini cards 
-        date
-        icon
-        temp
-        humidity
+You may redisplay the weather of any of your current searches
+When you reopen the page the last viewed city's weather will be displayed

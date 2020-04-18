@@ -1,14 +1,10 @@
-
-    
 var cities = [];
 
 function renderSearchHistory() {
-    $("#searchLog").empty();
     for (var i = 0; i < cities.length; i++){
         displayNewCity(cities[i]);
-        localStorage.setItem("city", cities[i]);
     }
-} 
+}  
 
 function displayNewCity (city){
     var newSearch = $("<button class = 'cityBtn'>");
@@ -17,7 +13,7 @@ function displayNewCity (city){
     newSearch.text(city);
     $("#searchLog").prepend(newSearch);
     $("#searchLog").prepend(hr);
-    $("#uv").empty();
+    //$("#uv").empty();
 }
 
 $("#searchLog").on("click", function(event){
@@ -33,23 +29,20 @@ $("#searchLog").on("click", function(event){
 });
 
 $(window).on( "load", function() {
-    $("#weather").show();
-    var city = localStorage.getItem("city");
-    getWeather(city);
-    getForecast(city)
+    var city = JSON.parse(localStorage.getItem("city"));
+    if (city) {
+        cities = city;
+        getWeather(cities[cities.length-1]);
+        getForecast(cities[cities.length-1]);
+        renderSearchHistory();
+    }
 });
-
+var city;
 $("#searchBtn").on("click", function(event){
     event.preventDefault();
-    var city = $("#cityInput").val().trim();
-   //*should only do something if there is something in the input field
-
+    city = $("#cityInput").val().trim().toUpperCase();
     //if the city is already there don't put it again
     if (city) {
-        if (cities.indexOf(city)=== -1){
-            cities.push(city);
-            renderSearchHistory(city);
-        }
         $("#cityInput").val("");
     }
     getWeather(city);
@@ -58,7 +51,8 @@ $("#searchBtn").on("click", function(event){
 });   
 
 //get current weather update
-function getWeather(city) {    
+function getWeather(city) { 
+    $("#errorMadeArea").hide();   
     var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=62fca606199df2afea0a32e25faffdc5";
 
     $.ajax({
@@ -71,15 +65,18 @@ function getWeather(city) {
         var longitude = response.coord.lon;
         var uvIndexQueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=62fca606199df2afea0a32e25faffdc5&lat=" + latitude + "&lon=" + longitude;
         $.ajax({
-            url:uvIndexQueryURL,
+            url: uvIndexQueryURL,
             method: "GET"
         }).then(displayUVIndex)
-    })
+        
+    }).catch(function(){
+        $("#errorMadeArea").show();
+    });
 }
+$("#errorMadeArea").hide();   
 
 //set all current weather text to appropriate item
 function displayWeather(cityInfo) {
-    console.log(cityInfo);
     $("#weather").show();
     //Setting all the main current weather
     $("#cityName").text(cityInfo.name + "  ")
@@ -88,7 +85,7 @@ function displayWeather(cityInfo) {
     var icon = cityInfo.weather[0].icon;
     var iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
     $("#mainIcon").attr("src", iconURL);
-    var mainTemp = ((cityInfo.main.temp - 273.15) * 1.80 + 32).toFixed(1); 
+    var mainTemp = ((cityInfo.main.temp - 273.15) * 1.80 + 32).toFixed(0); 
     $("#temp").text(mainTemp);   
     var humidity = cityInfo.main.humidity;
     $("#humidity").text(humidity);
@@ -97,6 +94,7 @@ function displayWeather(cityInfo) {
 //set uvIndex text to appropriate item
 //also set colors based on index
 function displayUVIndex(uvResponse){
+    $("#uv").empty();
     var UVIndex = uvResponse.value;
     $("#uv").append($("<span class = 'badge badge-lg'>").text(UVIndex));
     if (UVIndex >= 0 && UVIndex < 3){
@@ -107,7 +105,17 @@ function displayUVIndex(uvResponse){
         $(".badge").addClass("badgeOrange");
     } else if ( UVIndex > 8) {
         $(".badge").addClass("badge-danger");
-    } 
+    }
+    addCity(); 
+}
+
+function addCity () {
+    console.log(city);
+    if (cities.indexOf(city)=== -1 && city) {
+        cities.push(city);
+        localStorage.setItem("city", JSON.stringify(cities));
+        displayNewCity(city);
+    }
 }
     
 
@@ -133,7 +141,7 @@ function displayFiveDays(forecastResponse) {
            var iconURL = "http://openweathermap.org/img/w/" + list[i].weather[0].icon + ".png";
            $("#icon-"+ count).attr("src", iconURL);
 
-           $("#tempDay-"+ count).text(((list[i].main.temp- 273.15) * 1.80 +32).toFixed(1));
+           $("#tempDay-"+ count).text(((list[i].main.temp- 273.15) * 1.80 +32).toFixed(0));
            
            $("#humid-"+ count).text(list[i].main.humidity);
            count++; 
@@ -141,5 +149,4 @@ function displayFiveDays(forecastResponse) {
     }
 }
 
-$("#weather").hide();
-
+renderSearchHistory();

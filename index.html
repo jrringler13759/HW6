@@ -11,19 +11,25 @@
 <body>
 
 <header class = "navbar justify-content-center">
-    <span class = "navbar-brand mb-0 h1">Weather Dashboard</span>
+    <span class = "navbar-brand mb-0"><h1>Weather Dashboard</h1></span>
 </header>
 
 <main = "container">
     <div class = "row">
         
-        <aside class = "col-md-4">
+        <aside class = "col-md-4" id = "searchSection">
             <header>
                 <h2 id = "searchTitle">Search for City:</h2>
             </header>
+            <div id = "errorMadeArea">
+                <span>Please check the spelling.You may only use letters.</span>
+            </div>
             <form class = "form-inline my-2 my-lg-0">
                 <input class = "form-control mr-sm-2" id = "cityInput" type = "search" placeholder = "Search">
-                <button class = "btn btn-outline-success my-2 my-sm-0" id = "searchBtn" type = "submit">Search Icon</button>
+                <button class = "btn btn-outline-success my-2 my-sm-0" id = "searchBtn" type = "submit"><svg class="bi bi-search" width="1.5em" height="1.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+                  </svg></button>
             </form>
             <section id = "searchLog">
                 
@@ -38,8 +44,8 @@
                         <span id = "date">date</span>
                         <img id="mainIcon" src="" alt="Weather icon">
                     </h1>
-                    <p class = "card-text"><h5>Temperature: <span id = "temp"></span>&deg;F</h5></p>
-                    <p class = "card-text"><h5>Humidity: <span id = "humidity"></span>%</h5></p>
+                    <p class = "card-text"><h5>Temperature: <span id = "temp"></span>&deg; F</h5></p>
+                    <p class = "card-text"><h5>Humidity: <span id = "humidity"></span> %</h5></p>
                     <p class = "card-text"><h5>Wind Speed: <span id = "wind"></span></h5></p>
                     <h5 class = "card-text">UV Index: <span id = "uv"></span></h5>
                 </div> 
@@ -53,8 +59,8 @@
                             <div class = "card-body">
                                 <h5 class = "card-title"><span id = "date-1"></span></h5>
                                 <p class = "card-text"><img id = "icon-1"></img></p>
-                                <p class = "card-text">Temp: <span id = "tempDay-1"></span>&deg;F</p>
-                                <p class = "card-text">Humidity: <span id = "humid-1"></span>%</p>
+                                <p class = "card-text">Temp: <span id = "tempDay-1"></span>&deg; F</p>
+                                <p class = "card-text">Humidity: <span id = "humid-1"></span> %</p>
                             </div>
                         </div>
                     </div>
@@ -63,8 +69,8 @@
                             <div class = "card-body">
                                 <h5 class = "card-title"><span id = "date-2"></span></h5>
                                 <p class = "card-text"><img id = "icon-2"></img></p>
-                                <p class = "card-text">Temp: <span id = "tempDay-2"></span>&deg;F</p>
-                                <p class = "card-text">Humidity: <span id = "humid-2"></span>%</p>
+                                <p class = "card-text">Temp: <span id = "tempDay-2"></span>&deg; F</p>
+                                <p class = "card-text">Humidity: <span id = "humid-2"></span> %</p>
                             </div>
                         </div>
                     </div>
@@ -73,8 +79,8 @@
                             <div class = "card-body">
                                 <h5 class = "card-title"><span id = "date-3"></span></h5>
                                 <p class = "card-text"><img id = "icon-3"></img></p>
-                                <p class = "card-text">Temp: <span id = "tempDay-3"></span>&deg;F</p>
-                                <p class = "card-text">Humidity: <span id = "humid-3"></span>%</p>
+                                <p class = "card-text">Temp: <span id = "tempDay-3"></span>&deg; F</p>
+                                <p class = "card-text">Humidity: <span id = "humid-3"></span> %</p>
                             </div>
                         </div>
                     </div>
@@ -83,8 +89,8 @@
                             <div class = "card-body">
                                 <h5 class = "card-title"><span id = "date-4"></span></h5>
                                 <p class = "card-text"><img id = "icon-4"></img></p>
-                                <p class = "card-text">Temp: <span id = "tempDay-4"></span>&deg;F</p>
-                                <p class = "card-text">Humidity: <span id = "humid-4"></span>%</p>
+                                <p class = "card-text">Temp: <span id = "tempDay-4"></span>&deg; F</p>
+                                <p class = "card-text">Humidity: <span id = "humid-4"></span> %</p>
                             </div>
                         </div>
                     </div>

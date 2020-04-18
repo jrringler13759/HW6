@@ -1,6 +1,6 @@
 body {
     background-color: rgb(247, 220, 248);
-    color: #480E4A; 
+  
 }
 .navbar {
     background-color:#480E4A;
@@ -13,7 +13,7 @@ aside {
 }
 
 .card {
-    background-color: #7E1981;
+    background-color: rgba(113, 18, 116, 0.74);
     color: white;
 }
 
@@ -21,8 +21,14 @@ aside {
 /*Search / Column #1 */
 #searchTitle {
     margin: 20px;
+    color: #480E4A; 
 }
 
+#errorMadeArea {
+    color: rgb(201, 5, 5);
+    font-size: 12px;
+    margin-left: 10px;
+}
 .form-inline {
     margin: 20px;
 }
@@ -51,8 +57,7 @@ aside {
 
 /* Weather / Column #2 */
 #fullWeather{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 10px 20px 0px;
 }
 
 #fiveDay {
