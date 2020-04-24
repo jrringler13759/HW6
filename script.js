@@ -53,7 +53,7 @@ $("#searchBtn").on("click", function(event){
 //get current weather update
 function getWeather(city) { 
     $("#errorMadeArea").hide();   
-    var currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=62fca606199df2afea0a32e25faffdc5";
+    var currentQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=62fca606199df2afea0a32e25faffdc5";
 
     $.ajax({
         url: currentQueryURL,
@@ -63,7 +63,7 @@ function getWeather(city) {
        //use lat and lon to get uvindex
         var latitude =response.coord.lat; 
         var longitude = response.coord.lon;
-        var uvIndexQueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=62fca606199df2afea0a32e25faffdc5&lat=" + latitude + "&lon=" + longitude;
+        var uvIndexQueryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=62fca606199df2afea0a32e25faffdc5&lat=" + latitude + "&lon=" + longitude;
         $.ajax({
             url: uvIndexQueryURL,
             method: "GET"
@@ -83,7 +83,7 @@ function displayWeather(cityInfo) {
     var currentDate = moment().format("MM/DD/YY"); 
     $("#date").text("(" + currentDate + ")");
     var icon = cityInfo.weather[0].icon;
-    var iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+    var iconURL = "https://openweathermap.org/img/w/" + icon + ".png";
     $("#mainIcon").attr("src", iconURL);
     var mainTemp = ((cityInfo.main.temp - 273.15) * 1.80 + 32).toFixed(0); 
     $("#temp").text(mainTemp);   
@@ -121,7 +121,7 @@ function addCity () {
 
 //Five Day Forecast
 function getForecast(city) {
-    var forecastQueryURL= "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=62fca606199df2afea0a32e25faffdc5";;
+    var forecastQueryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=62fca606199df2afea0a32e25faffdc5";;
     $.ajax({
         url:forecastQueryURL,
         method: "GET"
@@ -138,7 +138,7 @@ function displayFiveDays(forecastResponse) {
            
            $("#date-"+ count).text(new Date(list[i].dt_txt).toLocaleDateString());
            
-           var iconURL = "http://openweathermap.org/img/w/" + list[i].weather[0].icon + ".png";
+           var iconURL = "https://openweathermap.org/img/w/" + list[i].weather[0].icon + ".png";
            $("#icon-"+ count).attr("src", iconURL);
 
            $("#tempDay-"+ count).text(((list[i].main.temp- 273.15) * 1.80 +32).toFixed(0));
